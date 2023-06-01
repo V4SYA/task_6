@@ -141,7 +141,7 @@ public:
 	    
 	// Копирую данные из input_layer на хосте в d_layer на устройстве.
         cudaMemcpy(d_layer, input_layer, size*sizeof(float), cudaMemcpyHostToDevice);
-	    free(input_layer);
+	free(input_layer);
         
         return forward(d_layer);
     }
