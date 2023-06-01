@@ -50,6 +50,7 @@ public:
         fread(b, sizeof(float), out_features, weights);
 	
 	////////////////////////////////////////
+
 	//Выделение памяти на GPU для массивов weight и bias.
         cudaMalloc((void**)&weight, in_features * out_features * sizeof(float));
         cudaMalloc((void**)&bias, out_features * sizeof(float));
@@ -140,7 +141,7 @@ public:
 	    
 	// Копирую данные из input_layer на хосте в d_layer на устройстве.
         cudaMemcpy(d_layer, input_layer, size*sizeof(float), cudaMemcpyHostToDevice);
-	free(input_layer);
+	    free(input_layer);
         
         return forward(d_layer);
     }
